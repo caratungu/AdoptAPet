@@ -1,11 +1,10 @@
 interface IUserDto {
-  firstName: string;
-  lastName: string;
-  nickname: string; //! Se debe validar que sea único
+  name: string;
   email: string;
-  phone: number;
+  phone: number,
+  birthdate: Date;
+  nDni: number;
   picture: string; //! Revisar
-  credential: string; //! Revisar
 }
 
 export default IUserDto;

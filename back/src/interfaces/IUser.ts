@@ -1,13 +1,12 @@
-import IAppointment from "./IAppointment";
-
 interface IUser {
-  id: number; //! Revisar
-  firstName: string;
-  lastName: string;
-  nickname: string; //! Se debe validar que sea único
+  id: number;
+  name: string;
   email: string;
-  phone: number;
+  phone: number,
+  birthdate: Date;
+  nDni: number;
   picture: string; //! Revisar
-  appointments: IAppointment[];
-  credential: string; //! Revisar
+  credentialsId: number;
 }
+
+export default IUser;

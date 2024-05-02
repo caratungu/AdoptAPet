@@ -2,12 +2,11 @@ import StatusAppointment from "../enums/StatusAppointment";
 
 interface IAppointmentDto {
   dateRequest: Date;
-  hourRequest: Date;
+  timeRequest: string;
   dateAppointment: Date;
-  hourAppointment: Date;
-  status: StatusAppointment;
-  user: string; // Revisar
-  service: string; // Revisar
+  timeAppointment: string;
+  userId: number; //! Revisar
+  serviceId: number; //! Revisar
 }
 
 export default IAppointmentDto;

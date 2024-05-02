@@ -2,6 +2,7 @@ import TypePet from "../enums/TypePet";
 import StatusPet from "../enums/StatusPet"
 
 interface IPet {
+  id: number;
   type: TypePet;
   name: string;
   age: number;
@@ -9,3 +10,5 @@ interface IPet {
   status: StatusPet;
   user: string; //! Revisar
 }
+
+export default IPet;

@@ -1,14 +1,14 @@
 import StatusAppointment from "../enums/StatusAppointment";
 
 interface IAppointment {
-  id: number; //! Revisar
+  id: number;
   dateRequest: Date;
-  hourRequest: Date;
+  timeRequest: string;
   dateAppointment: Date;
-  hourAppointment: Date;
+  timeAppointment: string;
   status: StatusAppointment;
-  user: string; //! Revisar
-  service: string; //! Revisar
+  userId: number; //! Revisar
+  serviceId: number; //! Revisar
 }
 
 export default IAppointment;

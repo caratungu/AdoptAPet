@@ -1,5 +1,3 @@
-import StatusAppointment from "../enums/StatusAppointment";
-
 interface IAppointmentDto {
   dateRequest: Date;
   timeRequest: string;

@@ -1,47 +1,24 @@
+import { CredentialModel } from "../config/data-source";
 import ICredentialsDto from "../dto/CredentialsDto";
-import ICredentials from "../interfaces/ICredentials";
+import { Credential } from "../entities/Credential";
 
-let credentials: ICredentials[] = [
-  {
-    id: 1,
-    username: "carlostunjano",
-    password: "Password#01",
-  },
-  {
-    id: 2,
-    username: "erikacortes",
-    password: "Password#02",
-  },
-  {
-    id: 3,
-    username: "marinagutierrez",
-    password: "Password#03",
-  },
-];
-let newCredentialId = 3;
-
-export const createCredentialsService = async (credentialData: ICredentialsDto): Promise<number> => {
-  newCredentialId++;
-  credentials.push({
-    id: newCredentialId,
-    username: credentialData.username,
-    password: credentialData.password,
-  });
-  return newCredentialId;
+export const createCredentialsService = async (credentialData: ICredentialsDto): Promise<Credential> => {
+  const newCredential = await CredentialModel.create(credentialData);
+  const results = await CredentialModel.save(newCredential);
+  
+  return results;
 };
 
 export const validateCredentialService = async (credentialData: ICredentialsDto): Promise<number | string> => {
-  let userCredentials: ICredentials[] = credentials.filter(
-    (credential: ICredentials) => {
-      if (credential.username === credentialData.username) {
-        if (credential.password === credentialData.password) {
-          return credential;
-        }
-      }
+  const checkCredential: Credential | null = await CredentialModel.findOneBy({
+    username: credentialData.username,
+  })
+  if (checkCredential) {
+    if (checkCredential.password === credentialData.password) {
+      return checkCredential.id
+    } else {
+      return "Credenciales de usuario inválidas";
     }
-  );
-  if (userCredentials.length === 1) {
-    return userCredentials[0].id;
   } else {
     return "Credenciales de usuario inválidas";
   }

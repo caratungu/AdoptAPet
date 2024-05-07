@@ -9,13 +9,10 @@ export class Credential {
 
     @Column({
         length: 50,
-        nullable: true,
         unique: true,
     })
     username: string;
 
-    @Column({
-        nullable: true,
-    })
+    @Column()
     password: string;
 }

@@ -19,7 +19,7 @@ export const getApponintments = async (req: Request, res: Response) => {
         allAppointments,
       });
   } catch {
-    res.status(500).json({ message: "Internal Server Error" });
+    res.status(404).json({ message: "Internal Server Error" });
   }
 };
 
@@ -30,14 +30,9 @@ export const getApponintmentsById = async (req: Request, res: Response) => {
     const appointment: Appointment | null = await getAppointmentsByIdService(
       id
     );
-    res
-      .status(200)
-      .json({
-        message: "Obtener el detalle de un turno específico",
-        appointment,
-      });
-  } catch {
-    res.status(404).json({ message: "No existe turno con ese id" });
+    res.status(200).json({message: "Detalle del turno solicitado", appointment});
+  } catch (error: any) {
+    res.status(404).json(error.message);
   }
 };
 
@@ -45,21 +40,20 @@ export const getApponintmentsById = async (req: Request, res: Response) => {
 export const createApponintment = async (req: Request, res: Response) => {
   try {
     const appointment: IAppointmentDto = req.body;
-    await createAppointmentService(appointment);
-    res.status(201).json({ message: "Agendar un nuevo turno" });
-  } catch {
-    res.status(400).json({ message: "Falta información de usuario" });
+    const results = await createAppointmentService(appointment);
+    res.status(201).json({ message: "Se ha agendado un nuevo turno", turno: results});
+  } catch (error: any) {
+    res.status(400).json(error.message);
   }
 };
 
 // PUT /appointment/cancel Cancelar un turno
 export const cancelApponintment = async (req: Request, res: Response) => {
   try {
-    const { id } = req.body;
-    await cancelAppointmentService(id);
-    res
-      .status(200).json({ message: "Cambiar el estatus de un turno a 'cancelled'" });
-  } catch {
-    res.status(404).json({ message: "No existe turno con ese id" });
+    const id = parseInt(req.params.id);
+    const results = await cancelAppointmentService(id);
+    res.status(200).json({ message: "Turno canceado", turn: results });
+  } catch (error: any) {
+    res.status(404).json(error.message);
   }
 };

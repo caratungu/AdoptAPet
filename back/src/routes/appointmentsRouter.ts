@@ -18,6 +18,6 @@ appointmentsRouter.get("/:id", getApponintmentsById);
 appointmentsRouter.post("/schedule", createApponintment);
 
 // PUT /appointment/cancel Cancelar un turno
-appointmentsRouter.put("/cancel", cancelApponintment);
+appointmentsRouter.put("/cancel/:id", cancelApponintment);
 
 export default appointmentsRouter;

@@ -1,3 +1,4 @@
+import { DB_TYPE, DB_HOST, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_NAME } from "./envs"
 import { DataSource } from "typeorm";
 import { User } from "../entities/User";
 import { Appointment } from "../entities/Appointment";
@@ -7,11 +8,11 @@ import { Pet } from "../entities/Pet";
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
-    port: 5433,
-    username: "postgres",
-    password: "4dm1n$C476",
-    database: "adoptapet",
+    host: DB_HOST,
+    port: DB_PORT,
+    username: DB_USERNAME,
+    password: DB_PASSWORD,
+    database: DB_NAME,
     // dropSchema: true,
     synchronize: true,
     logging: false,

@@ -23,9 +23,9 @@ export const getUserById = async (req: Request, res: Response) => {
   try {
     const id: number = parseInt(req.params.id);
     const user: User | null = await getUserByIdService(id)
-    res.status(200).json({message: "Obtener el detalle de un usuario específico", user})
-  } catch {
-    res.status(404).json({message: "No existe usuario registrado con ese id"})
+    res.status(200).json({message: "Usuario encontrado", user})
+  } catch (error: any) {
+    res.status(404).json(error.message)
   }
 };
 
@@ -36,7 +36,7 @@ export const registertUser = async (req: Request, res: Response) => {
     await registerUserService({ name, email, phone, birthdate, nDni, picture }, { username, password });
     res.status(201).json({message: "Registro de un nuevo usuario"})
   } catch (error: any) {
-    res.status(409).json(error.detail);
+    res.status(400).json(error.detail || error.message);
   }
 };
 
@@ -45,8 +45,8 @@ export const loginUser = async (req: Request, res: Response) => {
   try {
     const credentialData: ICredentialsDto = req.body;
     const results = await loginUserService(credentialData);
-    res.status(202).json({message: results})
-  } catch (error) {
-    res.status(500).json({message: "Internal Server Error"})
+    res.status(200).json(results)
+  } catch (error: any) {
+    res.status(400).json(error.message)
   }
 };

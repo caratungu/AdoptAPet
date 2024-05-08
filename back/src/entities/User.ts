@@ -34,7 +34,7 @@ export class User {
 
   @OneToOne(() => Credential)
   @JoinColumn()
-  credential: Credential;
+  credential: Credential | Credential["id"];
 
   @OneToMany(() => Appointment, (appointment) => appointment.user)
   appointments: Appointment[];

@@ -16,8 +16,13 @@ export const getAppointmentsService = async (): Promise<Appointment[]> => {
 
 // GET /appointment/:id Obtener un turno por id
 export const getAppointmentsByIdService = async (id: number): Promise<Appointment | null> => {
-  const appointmentById: Appointment | null = await AppointmentModel.findOneBy({
-    id,
+  const appointmentById: Appointment | null = await AppointmentModel.findOne({
+    where: {
+      id
+    },
+    relations: {
+      user: true
+    }
   });
   
   if (appointmentById) {

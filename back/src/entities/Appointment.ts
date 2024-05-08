@@ -32,6 +32,9 @@ export class Appointment {
 
   @Column({
     nullable: true,
+    type: "enum",
+    enum: StatusAppointment,
+    default: StatusAppointment.ACTIVE
   })
   status: StatusAppointment;
   

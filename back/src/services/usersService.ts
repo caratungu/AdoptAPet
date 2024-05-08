@@ -38,14 +38,10 @@ export const getUserByIdService = async (id: number): Promise<User | null> => {
 export const registerUserService = async (userData: IUserDto, credentialData: ICredentialsDto): Promise<void> => {
   if (userData.name && userData.email && userData.birthdate && userData.nDni && credentialData.username && credentialData.password) {
     const newCredentialId = await createCredentialsService(credentialData);
-    const newCredential = await CredentialModel.findOneBy({
-      id: newCredentialId,
-    })
-
     const newUser: User = await UserModel.create(userData);
     const results = await UserModel.save(newUser);
-    if (newCredential) results.credential = newCredential;
-    await UserModel.save(newUser);
+    results.credential = newCredentialId;
+    await UserModel.save(results);
   } else {
     throw Error ("Falta información")
   }

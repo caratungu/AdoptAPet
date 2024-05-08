@@ -13,6 +13,8 @@ export class Credential {
     })
     username: string;
 
-    @Column()
+    @Column({
+        select: false,
+    })
     password: string;
 }

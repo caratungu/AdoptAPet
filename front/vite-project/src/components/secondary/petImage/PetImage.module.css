@@ -1,0 +1,22 @@
+.pet {
+  margin: 15px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.petImage {
+    height: 150px;
+    border: solid cornsilk 3px;
+    border-radius: 15px;
+}
+
+.petName {
+  background-color: blueviolet;
+  border: solid cornsilk 3px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: cornsilk;
+  margin-top: -15px;
+}

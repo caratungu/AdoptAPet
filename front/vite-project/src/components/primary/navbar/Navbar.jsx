@@ -1,12 +1,12 @@
 import styles from "./Navbar.module.css";
-import adoptapet from "../../../assets/img/adoptapet.jpg";
+import { Logo } from "../../secondary";
 
 const Navbar = () => {
   let user="alogin";
   return (
     <div className={styles.container}>
       <div className={styles.logoname}>
-        <img className={styles.logo} src={adoptapet} alt="Logo" />
+        <Logo />
         <h2>AdoptAPet</h2>
       </div>
       <div className={styles.menu}>

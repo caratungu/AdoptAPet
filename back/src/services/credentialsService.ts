@@ -1,4 +1,3 @@
-import { log } from "console";
 import { CredentialModel } from "../config/data-source";
 import ICredentialsDto from "../dto/CredentialsDto";
 import { Credential } from "../entities/Credential";
@@ -12,9 +11,7 @@ export const createCredentialsService = async (
   return results.id;
 };
 
-export const validateCredentialService = async (
-  credentialData: ICredentialsDto
-): Promise<number> => {
+export const validateCredentialService = async (credentialData: ICredentialsDto): Promise<number> => {
   const checkCredential: Credential | null = await CredentialModel.findOne({
     where: {
       username: credentialData.username,

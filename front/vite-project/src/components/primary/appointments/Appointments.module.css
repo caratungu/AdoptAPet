@@ -1,0 +1,29 @@
+.table {
+    color: cornsilk;
+    margin: 2rem;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tr {
+    margin: 4px;
+    font-size: 1.2rem;
+    border-radius: 16px;
+    background-color: rgba(255,255,255,0.2);
+    height: 3rem;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.td {
+    height: 3rem;
+    width: 16%;
+    align-content: center;
+    text-align: center;
+}

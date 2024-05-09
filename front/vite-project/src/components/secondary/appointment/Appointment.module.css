@@ -1,0 +1,19 @@
+.tr {
+    margin: 2px;
+    border-radius: 16px;
+    background-color: rgba(255,255,255,0.2);
+    height: 3rem;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.td {
+    height: 3rem;
+    width: 16%;
+    align-content: center;
+    text-align: center;
+}

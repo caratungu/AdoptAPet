@@ -1,4 +1,4 @@
-import { CredentialModel, UserModel } from "../config/data-source";
+import { UserModel } from "../config/data-source";
 import ICredentialsDto from "../dto/CredentialsDto";
 import IUserDto from "../dto/UserDto";
 import { User } from "../entities/User";

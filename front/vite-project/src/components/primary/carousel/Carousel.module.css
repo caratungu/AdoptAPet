@@ -1,0 +1,7 @@
+.carrusel {
+  margin: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+}

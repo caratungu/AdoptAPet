@@ -1,0 +1,20 @@
+.active {
+    height: 2rem;
+    background-color: green;
+    border-radius: 10px;
+    align-content: center;
+}
+
+.cancelled {
+    height: 2rem;
+    background-color: red;
+    border-radius: 10px;
+    align-content: center;
+}
+
+.attended {
+    height: 2rem;
+    background-color: blue;
+    border-radius: 10px;
+    align-content: center;
+}

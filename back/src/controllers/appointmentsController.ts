@@ -14,10 +14,7 @@ export const getApponintments = async (req: Request, res: Response) => {
     const allAppointments: Appointment[] = await getAppointmentsService();
     res
       .status(200)
-      .json({
-        message: "Obtener el listado de todos los turnos de todos los usuarios",
-        allAppointments,
-      });
+      .json(allAppointments);
   } catch {
     res.status(404).json({ message: "Internal Server Error" });
   }

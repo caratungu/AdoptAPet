@@ -6,6 +6,10 @@ import StatusAppointment from "../enums/StatusAppointment";
 // GET /appointments Obtener todos los turnos
 export const getAppointmentsService = async (): Promise<Appointment[]> => {
   const appointments = await AppointmentModel.find({
+    order: {
+      dateRequest: "ASC",
+      timeRequest: "ASC",
+    },
     relations: {
       service: true,
       user: true,

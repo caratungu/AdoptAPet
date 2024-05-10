@@ -3,7 +3,7 @@ import styles from "./App.module.css";
 import { Footer, Navbar } from './components/primary';
 
 function App() {
-  const view = "home";
+  const view = "misTurnos";
 
   return (
     <>

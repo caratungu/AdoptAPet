@@ -1,6 +1,6 @@
 import { Carousel } from "../../components/primary";
 import { ImgText } from "../../components/secondary";
-import { descriptions as desc} from "../../helpers/descriptions"
+import { descriptions as desc} from "../../helpers/DB/descriptions"
 import { useState } from "react";
 
 const Home = () => {

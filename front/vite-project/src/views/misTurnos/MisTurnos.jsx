@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
 import { Appointments } from "../../components/primary";
-import { appointments as apps } from "../../helpers/myTurns";
 import styles from "./MisTurnos.module.css";
-import axios from "axios";
+import { getAppointments } from "../../helpers/functions/appointments/appointmentsFunctions";
 
 const MisTurnos = () => {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/appointments").then((res) => setAppointments(res.data));
+    getAppointments()
+      .then((res) => setAppointments(res))
+      .catch((error) => alert(error));
   }, []);
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Estado actual de turnos del usuario</h2>
-      {console.log(appointments)}
-      <Appointments appointments={appointments} />
+      {appointments.length > 0 ? (
+        <Appointments appointments={appointments} />
+      ) : (
+        <h3>No hay citas agendadas</h3>
+      )}
     </div>
   );
 };

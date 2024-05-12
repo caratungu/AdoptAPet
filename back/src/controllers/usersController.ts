@@ -32,11 +32,11 @@ export const getUserById = async (req: Request, res: Response) => {
 // POST /users/register Crear un nuevo usuario
 export const registertUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, phone, birthdate, nDni, picture, username, password } = req.body;
-    await registerUserService({ name, email, phone, birthdate, nDni, picture }, { username, password });
-    res.status(201).json({message: "Registro de un nuevo usuario"})
+    const { name, email, phone, birthdate, nDni, photo, username, password } = req.body;
+    await registerUserService({ name, email, phone, birthdate, nDni, photo }, { username, password });
+    res.status(201).json({message: "Registro de nuevo usuario exitoso"})
   } catch (error: any) {
-    res.status(400).json(error.detail || error.message);
+    res.status(400).json({message: `${error.detail || error.message}`});
   }
 };
 
@@ -45,7 +45,7 @@ export const loginUser = async (req: Request, res: Response) => {
   try {
     const credentialData: ICredentialsDto = req.body;
     const results = await loginUserService(credentialData);
-    res.status(200).json(results)
+    res.status(200).json({message: `Usted se ha logueado correctamente ${results.user?.name}`})
   } catch (error: any) {
     res.status(400).json(error.message)
   }

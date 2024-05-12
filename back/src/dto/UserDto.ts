@@ -1,10 +1,10 @@
 interface IUserDto {
   name: string;
   email: string;
-  phone: number,
+  phone: BigInt,
   birthdate: Date;
   nDni: number;
-  picture: string; //! Revisar
+  photo: string; //! Revisar
 }
 
 export default IUserDto;

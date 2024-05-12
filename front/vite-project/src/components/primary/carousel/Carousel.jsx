@@ -1,6 +1,6 @@
 import styles from "./Carousel.module.css";
 import { PetImage } from "../../secondary";
-import { pets } from "../../../helpers/pets";
+import { pets } from "../../../helpers/DB/pets";
 import { useState } from "react";
 
 const Carrusel = () => {

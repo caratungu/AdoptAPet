@@ -21,7 +21,7 @@ export class User {
   email: string;
 
   @Column("integer")
-  phone: number;
+  phone: BigInt;
 
   @Column()
   birthdate: Date;
@@ -30,7 +30,7 @@ export class User {
   nDni: number;
 
   @Column()
-  picture: string; //! Revisar
+  photo: string; //! Revisar
 
   @OneToOne(() => Credential)
   @JoinColumn()

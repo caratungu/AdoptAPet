@@ -1,4 +1,3 @@
-import { Logo } from "../../secondary";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -6,7 +5,7 @@ const Footer = () => {
     <div className={styles.container}>
       <div></div>
       <div>
-        <p>&copy; 2024 - AdoptAPet</p>
+        &copy; 2024 - AdoptAPet
       </div>
       <div></div>
     </div>

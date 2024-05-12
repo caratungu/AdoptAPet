@@ -7,8 +7,8 @@ import StatusAppointment from "../enums/StatusAppointment";
 export const getAppointmentsService = async (): Promise<Appointment[]> => {
   const appointments = await AppointmentModel.find({
     order: {
-      dateRequest: "ASC",
-      timeRequest: "ASC",
+      dateRequest: "DESC",
+      timeRequest: "DESC",
     },
     relations: {
       service: true,

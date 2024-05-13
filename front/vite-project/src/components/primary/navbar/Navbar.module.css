@@ -1,9 +1,3 @@
-.logo {
-    width: 20%;
-    height: 20%;
-    border-radius: 50%;
-}
-
 .container {
     width: 100vw;
     margin-top: 20px;
@@ -33,11 +27,11 @@
 
 .logoname {
     margin-left:10px;
-    width: 20vw;
+    width: 50vw;
     display: flex;
     align-items: center;
-    align-self: center;
-    justify-content:space-around
+    align-self:self-start;
+    justify-content: center;
 }
 
 .menu {

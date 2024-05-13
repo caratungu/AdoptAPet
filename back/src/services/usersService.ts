@@ -59,7 +59,6 @@ export const registerUserService = async (userData: IUserDto,credentialData: ICr
 // POST /users/login Login del usuario a la aplicación
 export const loginUserService = async (credentialData: ICredentialsDto) => {
   const validateCredential: number = await validateCredentialService(credentialData);
-  console.log(validateCredential);
   const userAuth = await UserModel.findOneBy({
     id: validateCredential,
   });

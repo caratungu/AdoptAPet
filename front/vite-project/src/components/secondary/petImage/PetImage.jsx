@@ -4,7 +4,7 @@ const PetImage = ({ namePet, imgPet }) => {
   return (
     <div className={styles.pet}>
       <img className={styles.petImage} src={imgPet} alt="Mascota" />
-      <spam className={styles.petName}>{namePet}</spam>
+      <p className={styles.petName}>{namePet}</p>
     </div>
   );
 };

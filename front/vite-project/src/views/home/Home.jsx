@@ -1,17 +1,13 @@
 import { Carousel } from "../../components/primary";
-import { ImgText } from "../../components/secondary";
-import { descriptions as desc} from "../../helpers/DB/descriptions"
-import { useState } from "react";
 
 const Home = () => {
-  const [txtImgToShow, setTextImgToShow] = useState(desc)
   
   return (
     <div>
+      <h3>Trabajamos incansablemente para asegurarnos de que cada animal encuentre el hogar perfecto, donde pueda formar parte de una familia amorosa.</h3>
+      <h1>Nuevos residentes</h1>
+      <h2>Con mucho amor para dar</h2>
       <Carousel />
-      {txtImgToShow.map((txtImg, index) => {
-        return <ImgText key={index} text={txtImg[0]} image={txtImg[1]} />
-      })}
     </div>
   );
 };

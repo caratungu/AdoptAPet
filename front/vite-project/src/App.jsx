@@ -1,17 +1,22 @@
-import { Home, MisTurnos, Login, Register } from '../src/views';
+import { Home, MisTurnos, Login, Register, About } from "../src/views";
 import styles from "./App.module.css";
-import { Footer, Navbar } from './components/primary';
+import { Routes, Route, useLocation } from "react-router-dom";
+import { Error, Footer, Navbar } from "./components/primary";
 
 function App() {
-  const view = "login";
-
   return (
     <>
       <Navbar />
-      {view === "home" && <Home />}
-      {view === "misTurnos" && <MisTurnos />}
-      {view === "login" && <Login />}
-      {view === "register" && <Register />}
+      <div className={styles.views}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/appointments" element={<MisTurnos />} />
+          <Route path="/users/login" element={<Login />} />
+          <Route path="/users/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </div>
       <Footer />
     </>
   );

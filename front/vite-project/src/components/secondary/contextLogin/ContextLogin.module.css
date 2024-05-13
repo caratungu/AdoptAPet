@@ -1,0 +1,15 @@
+.container {
+  /* background-color: aqua; */
+  /* font-size: 3rem; */
+  /* align-content: center; */
+  margin: 5rem 0rem 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  color: transparent;
+  -webkit-text-stroke: 2px cornsilk;
+  margin-top: 0;
+}

@@ -24,7 +24,7 @@ export const validateRegister = (inputs) => {
     errors.phone = "Número telefónico inválido";
   }
   
-  const nDniRegex = /^\d{5,}$/;
+  const nDniRegex = /^\d{5,9}$/;
   if (!nDniRegex.test(inputs.nDni)) {
     errors.nDni = "Número DNI inválido";
   }

@@ -133,7 +133,7 @@ const RegisterForm = () => {
           <label>Foto de perfíl:</label>
           <input
             className={styles.inputs}
-            type="text"
+            type="file"
             name="photo"
             value={userData.photo}
             onChange={handleInputChange}

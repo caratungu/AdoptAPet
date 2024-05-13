@@ -1,8 +1,10 @@
 import styles from "./Navbar.module.css";
 import { Logo } from "../../secondary";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  let user="alogin";
+let isLogin = false;
+
   return (
     <div className={styles.container}>
       <div className={styles.logoname}>
@@ -11,12 +13,13 @@ const Navbar = () => {
       </div>
       <div className={styles.menu}>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Pets</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Servicios</a></li>
-          {user==="login" ? <li><a href="#">Turnos</a></li> : <li><a href="#">Login</a></li>}
-          {user==="login" && <li><a href="#">Salir</a></li>}
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="#">Pets</Link></li>
+          <li><Link to="#">Contact</Link></li>
+          <li><Link to="#">Servicios</Link></li>
+          <li><Link to="/about">About</Link></li>
+          {isLogin ? <li><Link to="#">Turnos</Link></li> : <li><Link to="/users/login">Login</Link></li>}
+          {isLogin && <li><Link to="#">Salir</Link></li>}
         </ul>
       </div>
     </div>

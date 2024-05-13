@@ -8,7 +8,7 @@ const Carrusel = () => {
   return (
     <div className={styles.carrusel}>
       {petArray.map((pet) => {
-        return <PetImage namePet={pet.name} imgPet={pet.image} />
+        return <PetImage key={pet.name} namePet={pet.name} imgPet={pet.image} />
       })}
     </div>
   );

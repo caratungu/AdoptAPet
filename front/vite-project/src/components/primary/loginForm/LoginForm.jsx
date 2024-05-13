@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./LoginForm.module.css";
 import { loginUser, validateLogin } from "../../../helpers/functions";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [userData, setUserData] = useState({
@@ -21,11 +22,15 @@ const LoginForm = () => {
     setStatusBtn(validateLogin(userDataActual))
   };
 
+  const navigate = useNavigate();
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     loginUser(userData)
     .then((res) => alert(res.message))
     .catch((error) => alert(error.response.data))
+
+    navigate("/");
   };
 
   return (
@@ -53,9 +58,9 @@ const LoginForm = () => {
           onChange={handleInputChange}
         />
       </div>
+      <div className={styles.btns}>
       <button className={styles.button} disabled={statusBtn}>Acceder</button>
-      <div className={styles.register}>
-        <a href="#">Registrarse</a>
+        <a className={styles.register} href="/users/register">Registrarse</a>
       </div>
     </form>
   );

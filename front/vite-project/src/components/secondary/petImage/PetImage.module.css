@@ -1,8 +1,10 @@
 .pet {
-  margin: 15px;
-  width: 120px;
+  height: 200px;
+  margin: 20px 20px 0px 20px;
   display: flex;
   flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
 .petImage {

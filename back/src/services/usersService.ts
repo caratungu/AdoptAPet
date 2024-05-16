@@ -2,10 +2,7 @@ import { UserModel } from "../config/data-source";
 import ICredentialsDto from "../dto/CredentialsDto";
 import IUserDto from "../dto/UserDto";
 import { User } from "../entities/User";
-import {
-  createCredentialsService,
-  validateCredentialService,
-} from "./credentialsService";
+import { createCredentialsService, validateCredentialService } from "./credentialsService";
 
 //GET /users obtener todos los usuarios
 export const getUsersService = async (): Promise<User[]> => {
@@ -59,8 +56,14 @@ export const registerUserService = async (userData: IUserDto,credentialData: ICr
 // POST /users/login Login del usuario a la aplicación
 export const loginUserService = async (credentialData: ICredentialsDto) => {
   const validateCredential: number = await validateCredentialService(credentialData);
-  const userAuth = await UserModel.findOneBy({
-    id: validateCredential,
+  const userAuth = await UserModel.findOne({
+    where: {
+      credential: {id: validateCredential},
+    },
+    relations: {
+      appointments: true,
+      pets: true,
+    }
   });
   return { login: true, user: userAuth };
 };

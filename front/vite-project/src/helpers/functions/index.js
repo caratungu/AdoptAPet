@@ -10,3 +10,5 @@ export {
   validateAllFields,
 } from "./validations/validateRegister";
 export { createUser, loginUser } from "./users/usersFunctions";
+export { getServices } from "./services/servicesFunctions";
+export { validateSchedule, validateScheduleAllFields } from './validations/validateSchedule';

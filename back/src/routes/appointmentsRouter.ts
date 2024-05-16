@@ -1,10 +1,12 @@
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import {
   cancelApponintment,
   createApponintment,
   getApponintments,
-  getApponintmentsById,
+  getAppointmentsById,
+  getAppointmentsByUser
 } from "../controllers/appointmentsController";
+import { checkAppointmentSchedule } from "../middlewares";
 
 const appointmentsRouter: Router = Router();
 
@@ -12,10 +14,13 @@ const appointmentsRouter: Router = Router();
 appointmentsRouter.get("/", getApponintments);
 
 // GET /appointment/:id Obtener un turno por id
-appointmentsRouter.get("/:id", getApponintmentsById);
+appointmentsRouter.get("/:id", getAppointmentsById);
+
+// GET /appointment/byUser/:id Obtener un turno por id de usuario
+appointmentsRouter.get("/byuser/:id", getAppointmentsByUser);
 
 // POST /appointment/schedule Crear un nuevo turno
-appointmentsRouter.post("/schedule", createApponintment);
+appointmentsRouter.post("/schedule", checkAppointmentSchedule, createApponintment);
 
 // PUT /appointment/cancel Cancelar un turno
 appointmentsRouter.put("/cancel/:id", cancelApponintment);

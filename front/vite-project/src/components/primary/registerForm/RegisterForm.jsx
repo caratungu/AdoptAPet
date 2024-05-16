@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./RegisterForm.module.css";
 import { createUser, validateAllFields, validateRegister } from "../../../helpers/functions";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const RegisterForm = () => {
   const [userData, setUserData] = useState({
@@ -10,7 +12,7 @@ const RegisterForm = () => {
     phone: 0,
     birthdate: "",
     nDni: 0,
-    picture: "",
+    photo: "",
     username: "",
     password: "",
     password2: "",
@@ -21,9 +23,9 @@ const RegisterForm = () => {
     email: "El email es requerido",
     email2: "El email es requerido",
     phone: "El número de teléfono es requerido",
-    birthdate: "",
+    birthdate: "La fecha es requerida",
     nDni: "El número de documento es requerido",
-    picture: "",
+    photo: "La foto es requerida",
     username: "Username is required",
     password: "Password is required",
     password2: "Password is required",
@@ -45,11 +47,25 @@ const RegisterForm = () => {
     setStatusBtn(validateAllFields(userDataActual, errorsFromUser))
   };
 
+  const navigate = useNavigate();
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
     createUser(userData)
-    .then((res) => alert(res))
-    .catch((error) => alert(error.response.data.message))
+    .then((res) => {
+      console.log(res);
+      Swal.fire({
+        text: res,
+        confirmButtonColor: "#0a1148",
+      });
+      navigate("/users/login")
+    })
+    .catch((error) => {
+      Swal.fire({
+        text: error.response.data.message,
+        confirmButtonColor: "#0a1148",
+      });
+    })
   };
   
   return (
@@ -57,11 +73,12 @@ const RegisterForm = () => {
       <h2 className={styles.title}>Registro</h2>
       <div className={styles.inputsContainer2}>
         <div className={styles.inputsSubcontainer2}>
-          <label>Nombre:</label>
+          <label htmlFor="name">Nombre:</label>
           <input
             className={styles.inputs}
             type="text"
             name="name"
+            id="name"
             value={userData.name}
             placeholder="Pepito Perez"
             onChange={handleInputChange}
@@ -69,11 +86,12 @@ const RegisterForm = () => {
           <p>{errors.name}</p>
         </div>
         <div className={styles.inputsSubcontainer3}>
-          <label>Número de identificación:</label>
+          <label htmlFor="nDni">Número de identificación:</label>
           <input
             className={styles.inputs}
             type="number"
             name="nDni"
+            id="nDni"
             value={userData.nDni}
             onChange={handleInputChange}
           />
@@ -82,11 +100,12 @@ const RegisterForm = () => {
       </div>
       <div className={styles.inputsContainer2}>
         <div className={styles.inputsSubcontainer}>
-          <label>Correo electónico:</label>
+          <label htmlFor="email">Correo electónico:</label>
           <input
             className={styles.inputs}
             type="email"
             name="email"
+            id="email"
             value={userData.email}
             placeholder="pperez@mail.com"
             onChange={handleInputChange}
@@ -94,11 +113,12 @@ const RegisterForm = () => {
           <p>{errors.email}</p>
         </div>
         <div className={styles.inputsSubcontainer}>
-          <label>Confirmar correo electónico:</label>
+          <label htmlFor="email2">Confirmar correo electónico:</label>
           <input
             className={styles.inputs}
             type="email"
             name="email2"
+            id="email2"
             value={userData.email2}
             placeholder="pperez@mail.com"
             onChange={handleInputChange}
@@ -108,33 +128,36 @@ const RegisterForm = () => {
       </div>
       <div className={styles.inputsContainer2}>
         <div className={styles.inputsSubcontainer4}>
-          <label>Número telefónico:</label>
+          <label htmlFor="phone">Número telefónico:</label>
           <input
             className={styles.inputs}
             type="number"
             name="phone"
+            id="phone"
             value={userData.phone}
             onChange={handleInputChange}
           />
           <p>{errors.phone}</p>
         </div>
         <div className={styles.inputsSubcontainer4}>
-          <label>Fecha de nacimiento:</label>
+          <label htmlFor="birthdate">Fecha de nacimiento:</label>
           <input
             className={styles.inputs}
             type="date"
             name="birthdate"
+            id="birthdate"
             value={userData.birthdate}
             onChange={handleInputChange}
             />
           <p>{errors.birthdate}</p>
         </div>
         <div className={styles.inputsSubcontainer5}>
-          <label>Foto de perfíl:</label>
+          <label htmlFor="photo">Foto de perfíl:</label>
           <input
             className={styles.inputs}
-            type="file"
+            type="text"
             name="photo"
+            id="photo"
             value={userData.photo}
             onChange={handleInputChange}
             />
@@ -143,11 +166,12 @@ const RegisterForm = () => {
       </div>
       <div className={styles.inputsContainer2}>
         <div className={styles.inputsSubcontainer6}>
-          <label>Username:</label>
+          <label htmlFor="username">Username:</label>
           <input
             className={styles.inputs}
             type="text"
             name="username"
+            id="username"
             value={userData.username}
             placeholder="pepitoperez"
             onChange={handleInputChange}
@@ -155,11 +179,12 @@ const RegisterForm = () => {
           <p>{errors.username}</p>
         </div>
         <div className={styles.inputsSubcontainer6}>
-          <label>Contraseña:</label>
+          <label htmlFor="password">Contraseña:</label>
           <input
             className={styles.inputs}
             type="password"
             name="password"
+            id="password"
             value={userData.password}
             placeholder="**********"
             onChange={handleInputChange}
@@ -167,11 +192,12 @@ const RegisterForm = () => {
           <p>{errors.password}</p>
         </div>
         <div className={styles.inputsSubcontainer6}>
-          <label>Confirmar contraseña:</label>
+          <label htmlFor="password2">Confirmar contraseña:</label>
           <input
             className={styles.inputs}
             type="password"
             name="password2"
+            id="password2"
             placeholder="**********"
             value={userData.password2}
             onChange={handleInputChange}

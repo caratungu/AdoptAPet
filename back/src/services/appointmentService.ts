@@ -7,8 +7,8 @@ import StatusAppointment from "../enums/StatusAppointment";
 export const getAppointmentsService = async (): Promise<Appointment[]> => {
   const appointments = await AppointmentModel.find({
     order: {
-      dateRequest: "DESC",
-      timeRequest: "DESC",
+      dateAppointment: "DESC",
+      timeAppointment: "DESC",
     },
     relations: {
       service: true,
@@ -36,6 +36,31 @@ export const getAppointmentsByIdService = async (id: number): Promise<Appointmen
   }
 };
 
+// GET /appointment/byUser Obtener un turno por id de usuario
+export const getAppointmentsByUserService = async (id: number): Promise<Appointment[] | null> => {
+  const appointmentByUser: Appointment [] | null = await AppointmentModel.find({
+    where: {
+      user: {
+        id
+      }
+    },
+    order: {
+      dateAppointment: "DESC",
+      timeAppointment: "DESC",
+    },
+    relations: {
+      service: true,
+      user: true,
+    },
+  });
+  
+  if (appointmentByUser.length !== 0) {
+    return appointmentByUser;
+  } else {
+    throw Error ("No se encuentran turnos agendado para el usuario especificado");
+  }
+};
+
 // POST /appointment/schedule Crear un nuevo turno
 export const createAppointmentService = async (appointmentData: IAppointmentDto): Promise<Appointment> => {
   if (appointmentData.userId !== undefined){
@@ -47,7 +72,6 @@ export const createAppointmentService = async (appointmentData: IAppointmentDto)
     
     if (user) {
       newAppointment.user = user;
-      await AppointmentModel.save(newAppointment);
     } else {
       throw Error ("No se encuentra usuario con el ID especificado");
     }

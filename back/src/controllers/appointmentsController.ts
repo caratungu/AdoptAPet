@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
   getAppointmentsService,
   getAppointmentsByIdService,
+  getAppointmentsByUserService,
   createAppointmentService,
   cancelAppointmentService,
 } from "../services/appointmentService";
@@ -21,7 +22,7 @@ export const getApponintments = async (req: Request, res: Response) => {
 };
 
 // GET /appointment/:id Obtener un turno por id
-export const getApponintmentsById = async (req: Request, res: Response) => {
+export const getAppointmentsById = async (req: Request, res: Response) => {
   try {
     const id: number = parseInt(req.params.id);
     const appointment: Appointment | null = await getAppointmentsByIdService(
@@ -33,9 +34,22 @@ export const getApponintmentsById = async (req: Request, res: Response) => {
   }
 };
 
+// GET /appointment/byUser/:id Obtener un turno por id de usuario
+export const getAppointmentsByUser = async (req: Request, res: Response) => {
+  try {
+    const id: number = parseInt(req.params.id);
+    const appointments: Appointment [] | null = await getAppointmentsByUserService(
+      id
+    );
+    res.status(200).json({message: "Detalle de turnos solicitado", appointments});
+  } catch (error: any) {
+    res.status(404).json(error.message);
+  }
+};
+
 // POST /appointment/schedule Crear un nuevo turno
 export const createApponintment = async (req: Request, res: Response) => {
-  try {
+  try {    
     const appointment: IAppointmentDto = req.body;
     const results = await createAppointmentService(appointment);
     res.status(201).json({ message: "Se ha agendado un nuevo turno", turno: results});
@@ -49,7 +63,7 @@ export const cancelApponintment = async (req: Request, res: Response) => {
   try {
     const id = parseInt(req.params.id);
     const results = await cancelAppointmentService(id);
-    res.status(200).json({ message: "Turno canceado", turn: results });
+    res.status(200).json({ message: "Turno cancelado", turn: results });
   } catch (error: any) {
     res.status(404).json(error.message);
   }

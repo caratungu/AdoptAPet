@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+}
+
+.inputs {
+    border: solid cornsilk 2px;
+    border-radius: 15px;
+    margin: 0px 15px 0px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container2 {
+    display: flex;
+    margin: 0px 15px 0px 15px;
+}
+
+.select {
+    height: fit-content;
+}
+
+.description {
+    width: 300px;
+    height: 70px;
+    text-align: left;
+    margin: 0px 15px 0px 15px;
+}
+
+.button {
+    margin-top: 20px;
+}

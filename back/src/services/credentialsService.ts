@@ -25,9 +25,13 @@ export const validateCredentialService = async (credentialData: ICredentialsDto)
     },
   });
 
-  if (checkCredential && checkCredential.password === credentialData.password) {
-    return checkCredential.id;
+  if (checkCredential) {
+    if (checkCredential.password === credentialData.password) {
+      return checkCredential.id;
+    } else {
+      throw Error("Contraseña incorrecta");
+    }
   } else {
-    throw Error("Credenciales de usuario inválidas");
+    throw Error ("El usuario no existe");
   }
 };

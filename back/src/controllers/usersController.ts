@@ -45,7 +45,7 @@ export const loginUser = async (req: Request, res: Response) => {
   try {
     const credentialData: ICredentialsDto = req.body;
     const results = await loginUserService(credentialData);
-    res.status(200).json({message: `Usted se ha logueado correctamente ${results.user?.name}`})
+    res.status(200).json({message: `Usted se ha logueado correctamente ${results.user?.name}`, user: results.user})
   } catch (error: any) {
     res.status(400).json(error.message)
   }

@@ -5,6 +5,7 @@ import {
   registertUser,
   loginUser,
 } from "../controllers/usersController";
+import { checkRequestRegister } from "../middlewares";
 
 const usersRouter: Router = Router();
 
@@ -15,7 +16,7 @@ usersRouter.get("/", getUsers);
 usersRouter.get("/:id", getUserById);
 
 // POST /users/register Crear un nuevo usuario
-usersRouter.post("/register", registertUser);
+usersRouter.post("/register", checkRequestRegister, registertUser);
 
 // POST /users/login Login del usuario a la aplicación
 usersRouter.post("/login", loginUser);

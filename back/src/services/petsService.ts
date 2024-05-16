@@ -68,7 +68,6 @@ export const statusPetService = async (id: number, petStatus: IPetDto) => {
         petToUpdate.status = StatusPet.ADOPTED;
         await PetModel.save(petToUpdate);
       } else {
-        console.log("El usuario con el id especificado no existe");
         throw Error("El usuario con el id especificado no existe");
       }
     } else {

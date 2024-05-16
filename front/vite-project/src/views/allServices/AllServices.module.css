@@ -1,0 +1,15 @@
+@keyframes sombra {
+  0% {
+    text-shadow: 0 0 5px #f39c12, 0 0 10px #f39c12, 0 0 15px #f39c12,
+      0 0 20px #f39c12, 0 0 25px #f39c12, 0 0 30px #f39c12;
+  }
+  100% {
+    text-shadow: 0 0 10px #e74c3c, 0 0 20px #e74c3c, 0 0 30px #e74c3c,
+      0 0 40px #e74c3c, 0 0 50px #e74c3c, 0 0 60px #e74c3c;
+  }
+}
+
+.logueate {
+  color: white;
+  animation: sombra 1.5s infinite alternate;
+}

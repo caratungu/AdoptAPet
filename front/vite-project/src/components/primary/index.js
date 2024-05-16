@@ -6,3 +6,5 @@ export { default as LoginForm } from "./loginForm/LoginForm";
 export { default as RegisterForm } from "./registerForm/RegisterForm";
 export { default as Error } from "./error/Error";
 export { default as ScheduleForm } from "./scheduleForm/ScheduleForm";
+export { default as ServicesInfo } from './servicesInfo/ServicesInfo';
+export { default as CardsPets } from "./cardsPet/CardsPet";

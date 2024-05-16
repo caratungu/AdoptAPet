@@ -5,7 +5,26 @@
     justify-items: center;
 }
 
+.container2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container2_1 {
+    width: 20%;
+}
+
+.container2_2 {
+    width: 60%;
+}
+
 .title {
     text-align: center;
-    margin-bottom: -1rem;
+    /* margin-bottom: -1rem; */
+}
+
+.btn {
+
 }

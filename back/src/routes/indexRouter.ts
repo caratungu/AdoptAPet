@@ -7,7 +7,7 @@ import petsRouter from "./petsRouter";
 const router: Router = Router();
 
 router.use("/users", usersRouter);
-router.use("/appointments", appointmentsRouter);
+router.use("/turns", appointmentsRouter);
 router.use("/services", serviceRouter);
 router.use("/pets", petsRouter)
 
